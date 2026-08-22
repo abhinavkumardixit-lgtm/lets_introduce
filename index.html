@@ -1,1444 +1,739 @@
-﻿  <!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="description"
-    content="Abhinav Kumar Dixit - AI/ML &amp; Cloud Engineer. Personal Portfolio showcasing AI projects, cloud engineering, hackathons, and full-stack development." />
-  <meta name="keywords"
-    content="Abhinav Kumar Dixit, AI Engineer, Machine Learning, Cloud Architecture, GCP, Google Student Ambassador, Portfolio, Developer, PSIT Kanpur" />
-  <meta name="robots" content="INDEX,FOLLOW" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abhinav Kumar Dixit | AIML & Cloud Engineer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <title>Abhinav Kumar Dixit - AI/ML &amp; Cloud Engineer Portfolio</title>
-  
-  <link rel="icon" href="assets/images/logo/favicon.png" type="image/png" />
-  
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-  
-  <link rel="stylesheet" href="assets/css/swiper-bundle.css" />
-  
-  <link rel="stylesheet" href="assets/css/magnific-popup.css" />
-  
-  <link rel="stylesheet" href="assets/css/aos.css" />
-  
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <link rel="stylesheet" href="assets/css/extra-features.css" />
+  <style>
+    :root {
+      --bg-dark: #f3f0e8;
+      --bg-card: #fffdf8;
+      --bg-card-hover: #ebe7dd;
+      --accent-cyan: #171717;
+      --accent-indigo: #4a4a4a;
+      --accent-purple: #5c5c5c;
+      --accent-emerald: #2b2b2b;
+      --text-main: #171717;
+      --text-muted: #62615d;
+      --border-color: #c8c3b8;
+      --glow: 0 8px 18px rgba(23, 23, 23, 0.08);
+      --font-main: 'Source Sans 3', sans-serif;
+      --font-display: 'Libre Baskerville', Georgia, serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: repeating-linear-gradient(0deg, rgba(23,23,23,.018) 0, rgba(23,23,23,.018) 1px, transparent 1px, transparent 4px);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Dynamic Mesh */
+    #canvas-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .glow-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: -1;
+      display: none;
+      pointer-events: none;
+      animation: floatOrb 12s infinite alternate ease-in-out;
+    }
+
+    .glow-orb-1 {
+      width: 450px;
+      height: 450px;
+      background: none;
+      top: 10%;
+      left: 15%;
+    }
+
+    .glow-orb-2 {
+      width: 500px;
+      height: 500px;
+      background: transparent;
+      bottom: 15%;
+      right: 10%;
+      animation-delay: -6s;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, 60px) scale(1.15); }
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.8rem 1.6rem;
+      background: rgba(255, 253, 248, 0.97);
+      backdrop-filter: none;
+      border: 1px solid var(--border-color);
+      border-radius: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .nav-brand {
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--accent-cyan);
+      background: none;
+      -webkit-text-fill-color: currentColor;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-cyan);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 5.5rem 0;
+    }
+
+    /* Section Headers */
+    .section-tag {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      padding: 4rem 0 2rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #ebe7dd;
+      border: 1px solid var(--border-color);
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      color: var(--accent-cyan);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 10px var(--accent-emerald);
+      animation: pulseAnim 2s infinite;
+    }
+
+    @keyframes pulseAnim {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.6; }
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 span {
+      background: none;
+      color: var(--accent-cyan);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-tagline {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem 1.6rem;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent-cyan);
+      color: #fff;
+      box-shadow: none;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 0 #fff;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      background: #e4dfd4;
+      transform: translateY(-2px);
+    }
+
+    /* Grid & Cards */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.8rem;
+      backdrop-filter: none;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s ease;
+    }
+
+    .card:hover {
+      background: var(--bg-card-hover);
+      border-color: #171717;
+      transform: translateY(-4px);
+      box-shadow: var(--glow);
+    }
+
+    /* Tech Badges */
+    .badge-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .tech-pill {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 6px;
+      background: #ebe7dd;
+      border: 1px solid var(--border-color);
+      color: var(--accent-cyan);
+    }
+
+    /* Experience Timeline */
+    .timeline-item {
+      position: relative;
+      padding-left: 2rem;
+      border-left: 2px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -7px;
+      top: 4px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: none;
+    }
+
+    .timeline-role {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .timeline-company {
+      font-size: 0.95rem;
+      color: var(--accent-cyan);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline-date {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    /* Skills Cloud */
+    .skill-category {
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-category h4 {
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      letter-spacing: 1px;
+    }
+
+    #skills .grid-3 {
+      gap: 2.25rem;
+    }
+
+    #skills .card {
+      padding: 2rem;
+    }
+
+    #skills .card h3 {
+      margin-bottom: 1.25rem !important;
+    }
+
+    #skills .card p {
+      line-height: 2;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Scroll Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      nav { border-radius: 0; width: 100%; top: 0; }
+      .nav-links { display: none; }
+    }
+  </style>
 </head>
+<body>
 
-<body class="tw-magic-cursor" data-theme="dark">
+  <!-- Dynamic Canvas Background -->
+  <canvas id="canvas-bg"></canvas>
+  <div class="glow-orb glow-orb-1"></div>
+  <div class="glow-orb glow-orb-2"></div>
 
-  <a href="#main-content" class="ef-skip-link">Skip to content</a>
-  <div id="efScrollProgress" aria-hidden="true"></div>
+  <!-- Navbar -->
+  <nav>
+    <a href="#" class="nav-brand">AKD.ai</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Leadership</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+    </ul>
+    <a href="https://www.linkedin.com/in/abhinav-kumar-dixit-39a4a03a3/" target="_blank" class="btn btn-secondary" style="padding: 0.4rem 1rem; font-size: 0.85rem;">
+      <i class="fab fa-linkedin"></i> Connect
+    </a>
+  </nav>
 
-  <div class="preloader">
-    <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
-      <path id="preloaderSvg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
-    </svg>
-    <div class="preloader-heading">
-      <div class="load-text">
-        <span>L</span>
-        <span>o</span>
-        <span>a</span>
-        <span>d</span>
-        <span>i</span>
-        <span>n</span>
-        <span>g</span>
-      </div>
-    </div>
-  </div>
-  
-
-  
-  <div class="overlay"></div>
-  
-
-  
-  <div class="side-overlay"></div>
-  
-
-  
-  <div id="magic-cursor">
-    <div id="ball"></div>
-  </div>
-  
-
-  
-  <div id="toast-container"></div>
-  
-
-  
-  <div class="back-to-top-wrapper">
-    <button id="back_to_top" type="button" class="back-to-top-btn">
-      <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M11 6L6 1L1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-          stroke-linejoin="round" />
-      </svg>
-    </button>
-  </div>
-  
-
-  
-  <div class="tw-offcanvas-2-area p-relative">
-    <div class="tw-offcanvas-2-bg is-left left-box"></div>
-    <div class="tw-offcanvas-2-bg is-right right-box d-none d-md-block"></div>
-    <div class="tw-offcanvas-2-wrapper">
-      <div class="tw-offcanvas-2-left left-box">
-        <div class="tw-offcanvas-2-left-wrap d-flex justify-content-between align-items-center">
-          <div class="twoffcanvas__logo">
-            <a class="logo-1" href="index.html"><img src="assets/images/logo/logo.png" alt="Abhinav Logo" /></a>
-          </div>
-          <div class="tw-offcanvas-2-close d-md-none text-end">
-            <button class="tw-offcanvas-2-close-btn tw-offcanvas-2-close-btn">
-              <span class="text">
-                <span class="text-white">close</span>
-              </span>
-              <span class="d-inline-block">
-                <span>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="32.621" height="1.00918"
-                      transform="matrix(0.704882 0.709325 -0.704882 0.709325 1.0061 0)" fill="currentcolor" />
-                    <rect width="32.621" height="1.00918"
-                      transform="matrix(0.704882 -0.709325 0.704882 0.709325 0 23.2842)" fill="currentcolor" />
-                  </svg>
-                </span>
-              </span>
-            </button>
-          </div>
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container">
+      <div class="reveal">
+        <div class="hero-badge">
+          <span class="pulse"></span> Open for Relocation | AIML & Cloud Roles
         </div>
-        <div class="tw-main-menu-mobile menu-hover-active counter-row">
-          <nav></nav>
-        </div>
-      </div>
-      <div class="tw-offcanvas-2-right right-box d-none d-md-block p-relative">
-        <div class="tw-offcanvas-2-close text-end">
-          <button class="tw-offcanvas-2-close-btn">
-            <span class="text">
-              <span>close</span>
-            </span>
-            <span class="d-inline-block">
-              <span>
-                <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9.80859 9.80762L28.1934 28.1924" stroke="currentColor" stroke-width="1.5"
-                    stroke-linecap="round" stroke-linejoin="round" />
-                  <path d="M9.80859 28.1924L28.1934 9.80761" stroke="currentColor" stroke-width="1.5"
-                    stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </span>
-            </span>
-          </button>
-        </div>
-        <div class="tw-offcanvas-2-right-inner d-flex flex-column justify-content-between h-100">
-          <div class="twoffcanvas__contact-info">
-            <div class="twoffcanvas__contact-title">
-              <h5 class="text-white">Contact us</h5>
-            </div>
-            <ul>
-              <li>
-                <span class="text-main-two-600 tw-text-xl"><i class="ph ph-map-pin-line"></i></span>
-                <a class="text-white" href="https://www.google.com/maps/place/Kanpur,+Uttar+Pradesh"
-                  target="_blank" rel="noopener noreferrer">Kanpur, Uttar Pradesh, India</a>
-              </li>
-              <li>
-                <span class="text-main-two-600 tw-text-xl"><i class="ph ph-envelope"></i></span>
-                <a class="text-white" href="mailto:abhinavkumardixit@gmail.com"><span
-                    class="__cf_email__">abhinavkumardixit@gmail.com</span></a>
-              </li>
-              <li>
-                <span class="text-main-two-600 tw-text-xl"><i class="ph ph-phone-call"></i></span>
-                <a class="text-white" href="tel:+919321785920">+91 93217 85920</a>
-              </li>
-            </ul>
-          </div>
-          <div class="footer-social" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-            <ul class="tw-gap-2">
-              <li>
-                <a href="https://github.com/abhinavkumardixit-lgtm" target="_blank" rel="noopener noreferrer">
-                  <span class="active-media d-flex align-items-center tw-gap-1">GITHUB <i
-                      class="ph ph-arrow-bend-up-right"></i></span>
-                  <span class="hover-media"><i class="ph ph-github-logo"></i></span>
-                </a>
-              </li>
-              <li>
-                <a href="https://www.linkedin.com/in/abhinav-kumar-dixit-39a4a03a3" target="_blank" rel="noopener noreferrer">
-                  <span class="active-media d-flex align-items-center tw-gap-1">LINKEDIN <i
-                      class="ph ph-arrow-bend-up-right"></i></span>
-                  <span class="hover-media"><i class="ph ph-linkedin-logo"></i></span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-
-  
-  <header class="header header-two header-three tw-transition-all tw-z-99 position-relative">
-    <div class="container tw-container-1800-px">
-      <nav class="d-flex align-items-center justify-content-between position-relative">
-        
-        <div class="header-three-logo tw-rounded-md">
-          <a href="index.html" class="link">
-            <img src="assets/images/logo/logo-secendary.png" alt="Abhinav Logo" class="max-w-200-px" />
+        <h1>
+          Building Scalable Intelligence.<br>
+          <span>Abhinav Kumar Dixit</span>
+        </h1>
+        <p class="hero-tagline">
+          Computer Science undergrad at PSIT Kanpur specializing in Autonomous AI Agents, Cloud Infrastructure, and Geospatial Data Systems.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">
+            <i class="fas fa-microchip"></i> Explore Projects
+          </a>
+          <a href="https://github.com/abhinavkumardixit-lgtm/lets_introduce.git" target="_blank" class="btn btn-secondary">
+            <i class="fab fa-github"></i> GitHub Repository
+          </a>
+          <a href="https://www.linkedin.com/in/abhinav-kumar-dixit-39a4a03a3/" target="_blank" class="btn btn-secondary">
+            <i class="fab fa-linkedin"></i> LinkedIn Profile
           </a>
         </div>
-        
-
-        
-        <div class="header-three-social d-none d-lg-block">
-          <ul class="d-flex tw-gap-205">
-            <li>
-              <a class="tw-w-13 tw-h-13 lh-1 d-inline-flex justify-content-center align-items-center text-heading tw-text-xl tw-rounded-md"
-                href="https://www.linkedin.com/in/abhinav-kumar-dixit-39a4a03a3" target="_blank" rel="noopener noreferrer"><i class="ph-bold ph-linkedin-logo"></i></a>
-            </li>
-            <li>
-              <a class="tw-w-13 tw-h-13 lh-1 d-inline-flex justify-content-center align-items-center text-heading tw-text-xl tw-rounded-md"
-                href="https://github.com/abhinavkumardixit-lgtm" target="_blank" rel="noopener noreferrer"><i class="ph-bold ph-github-logo"></i></a>
-            </li>
-          </ul>
-        </div>
-        
-
-        
-        <div class="header-menu d-none">
-          
-          <div class="main-menu">
-            <nav class="tw-main-menu-content">
-              <ul>
-                <li class="p-static has-dropdown">
-                  <a class="color-active" href="index.html">Home</a>
-                  
-                  <div class="tw-submenu submenu has-homemenu">
-                    <div class="row gx-6 row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2">
-                      <div class="col homemenu">
-                        <div class="homemenu-thumb tw-mb-4">
-                          <img src="assets/images/thumbs/home1.jpg" alt="home-one" />
-                          <div class="homemenu-btn w-100">
-                            <div class="tw-mb-2">
-                              <a class="bg-main-two-600 text-white fw-semibold tw-py-3 tw-text-sm d-inline-block hover-bg-white hover-text-heading menu-btn show-1"
-                                href="index.html">
-                                Multi Page
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="homemenu-content text-center">
-                          <h4 class="homemenu-title">
-                            <a href="index.html">Ceative Agency</a>
-                          </h4>
-                        </div>
-                      </div>
-                      <div class="col homemenu">
-                        <div class="homemenu-thumb tw-mb-4">
-                          <img src="assets/images/thumbs/home2.jpg" alt="home-two" />
-                          <div class="homemenu-btn w-100">
-                            <div class="tw-mb-2">
-                              <a class="bg-main-two-600 text-white fw-semibold tw-py-3 tw-text-sm d-inline-block hover-bg-white hover-text-heading menu-btn show-1"
-                                href="index-2.html">
-                                Multi Page
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="homemenu-content text-center">
-                          <h4 class="homemenu-title">
-                            <a href="index-2.html">Digital Studio</a>
-                          </h4>
-                        </div>
-                      </div>
-                      <div class="col homemenu">
-                        <div class="homemenu-thumb tw-mb-4">
-                          <img src="assets/images/thumbs/home3.jpg" alt="home-three" />
-                          <div class="homemenu-btn w-100">
-                            <div class="tw-mb-2">
-                              <a class="bg-main-two-600 text-white fw-semibold tw-py-3 tw-text-sm d-inline-block hover-bg-white hover-text-heading menu-btn show-1"
-                                href="index-3.html">
-                                Multi Page
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="homemenu-content text-center">
-                          <h4 class="homemenu-title">
-                            <a href="index-3.html">Personal Portfolio</a>
-                          </h4>
-                        </div>
-                      </div>
-                      <div class="col homemenu">
-                        <div class="homemenu-thumb tw-mb-4">
-                          <img src="assets/images/thumbs/coming-soon-img.png" alt="coming-soon" />
-                        </div>
-                        <div class="homemenu-content text-center">
-                          <h4 class="homemenu-title">
-                            <a href="#">Coming Soon</a>
-                          </h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                </li>
-                <li><a href="about.html">About Us</a></li>
-                <li class="has-dropdown">
-                  <a href="service.html">Services</a>
-                  <ul class="submenu tw-submenu">
-                    <li><a href="service.html">Our Service</a></li>
-                    <li>
-                      <a href="service-details.html">Service Details</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="has-dropdown">
-                  <a href="#">Pages</a>
-                  <ul class="submenu tw-submenu">
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="team.html">Our Team</a></li>
-                    <li><a href="testimonial.html">Testimonials</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="portfolio-one.html">Portfolio One</a></li>
-                    <li><a href="portfolio-two.html">Portfolio Two</a></li>
-                    <li>
-                      <a href="portfolio-three.html">Portfolio Theee</a>
-                    </li>
-                    <li><a href="portfolio-four.html">Portfolio Four</a></li>
-                    <li>
-                      <a href="portfolio-details.html">Portfolio Details</a>
-                    </li>
-                    <li><a href="faq.html">Our Faq</a></li>
-                    <li><a href="error.html">Error</a></li>
-                  </ul>
-                </li>
-                <li class="has-dropdown">
-                  <a href="blog.html">Blog</a>
-                  <ul class="submenu tw-submenu">
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="blog-list.html">Blog List</a></li>
-                    <li><a href="blog-details.html">Blog Details</a></li>
-                  </ul>
-                </li>
-                <li><a href="contact.html">Contact</a></li>
-              </ul>
-            </nav>
-          </div>
-          
-        </div>
-        
-
-        
-        <div class="header-right d-flex align-items-center tw-gap-705">
-
-          <div class="ef-header-actions d-flex align-items-center">
-            <button id="efSearchBtn" class="ef-icon-btn" type="button" aria-label="Search site" title="Search (Ctrl+K)">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            </button>
-            <button id="efThemeToggle" class="ef-icon-btn" type="button" aria-label="Toggle light / dark mode" title="Toggle theme">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-            </button>
-          </div>
-
-          <div class="header-three-menu">
-            <button
-              class="tw-offcanvas-open-btn tw-w-13 tw-h-13 lh-1 d-inline-flex justify-content-center align-items-center tw-transition-3 tw-rounded-md">
-              <span><img class="tw-transition-3" src="assets/images/icons/header-three-toggle.svg"
-                  alt="toggle" /></span>
-            </button>
-          </div>
-          
-
-          
-          <div class="header-three-button d-none d-md-block">
-            <a class="tw-hover-btn bg-black text-white fw-bold tw-py-4 tw-px-10 d-inline-block hover-text-white text-uppercase tw-rounded-md"
-              href="contact.html">
-              Download CV
-              <span class="tw-hover-btn-circle-dot bg-main-two-600"></span>
-            </a>
-          </div>
-          
-        </div>
-
-        
-      </nav>
+      </div>
     </div>
   </header>
-  
-  <div id="smooth-wrapper">
-    <div id="smooth-content">
-      <section class="banner-three-area" id="main-content" tabindex="-1">
-        <div class="container tw-container-1800-px">
-          <div class="row">
-            <div class="col-xl-12">
-              <div class="banner-three-wrapper position-relative z-1">
-                <div class="banner-three-man position-absolute start-50 translate-middle-x">
-                  <img src="assets/images/shapes/banner-three-man.png" alt="man" />
-                </div>
-                <h1 class="banner-three-title text-black tw-mb-30">
-                  engineer
-                </h1>
-                <div class="banner-three-wrap d-flex justify-content-between align-items-end position-relative z-1">
-                  <div class="banner-three-left tw-rounded-lg" data-aos="fade-up" data-aos-duration="1000"
-                    data-aos-delay="200">
-                    <h2 class="banner-three-left-title tw-text-3xl tw-mb-6">
-                      Hello! I'm Abhinav <br />
-                      Aspiring AI/ML Engineer &amp; Cloud Builder.
-                    </h2>
-                    <div class="banner-three-list">
-                      <ul>
-                        <li class="tw-text-lg fw-medium d-inline-flex align-items-center tw-gap-2 tw-mb-4">
-                          <span><img src="assets/images/icons/banner-three-pluse.svg" alt="pluse" /></span>
-                          AI &amp; Machine Learning
-                        </li>
-                        <li class="tw-text-lg fw-medium d-inline-flex align-items-center tw-gap-2 tw-mb-4">
-                          <span><img src="assets/images/icons/banner-three-pluse.svg" alt="pluse" /></span>
-                          Cloud Architecture (GCP)
-                        </li>
-                        <li class="tw-text-lg fw-medium d-inline-flex align-items-center tw-gap-2 tw-mb-4">
-                          <span><img src="assets/images/icons/banner-three-pluse.svg" alt="pluse" /></span>
-                          Full-Stack Web Development
-                        </li>
-                        <li class="tw-text-lg fw-medium d-inline-flex align-items-center tw-gap-2 tw-mb-4">
-                          <span><img src="assets/images/icons/banner-three-pluse.svg" alt="pluse" /></span>
-                          Cybersecurity
-                        </li>
-                        <li class="tw-text-lg fw-medium d-inline-flex align-items-center tw-gap-2 tw-mb-4">
-                          <span><img src="assets/images/icons/banner-three-pluse.svg" alt="pluse" /></span>
-                          Geospatial Data Analysis
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="banner-three-center text-center" data-aos="fade-up" data-aos-duration="1000"
-                    data-aos-delay="200">
-                    <h3 class="banner-three-center-title tw-text-120">
-                      AI, Cloud &amp; Engineering solutions that drive real-world impact.
-                    </h3>
-                    <div class="banner-three-button">
-                      <a class="tw-hover-btn bg-black text-white fw-bold tw-py-4 tw-px-10 d-inline-block hover-text-white text-uppercase tw-rounded-lg"
-                        href="contact.html">
-                        view projects
-                        <span class="tw-hover-btn-circle-dot bg-main-two-600"></span>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="banner-three-right tw-rounded-lg" data-aos="fade-up" data-aos-duration="1000"
-                    data-aos-delay="300">
-                    <div class="banner-three-counter-item tw-rounded-md tw-mb-4 position-relative">
-                      <h4
-                        class="banner-three-counter-title tw-text-101 fw-semibold font-heading text-heading tw-mb-2 lh-1">
-                        <span class="purecounter font-heading" data-purecounter-duration="2"
-                          data-purecounter-end="3"></span>+
-                      </h4>
-                      <p class="banner-three-counter-paragraph tw-text-lg fw-medium text-heading">
-                        Hackathons Led
-                      </p>
-                    </div>
-                    <div class="banner-three-counter-item tw-rounded-md tw-mb-4 ms-auto bg-black">
-                      <h4
-                        class="banner-three-counter-title tw-text-101 fw-semibold font-heading text-white tw-mb-2 lh-1">
-                        <span class="purecounter font-heading" data-purecounter-duration="4"
-                          data-purecounter-end="10"></span>+
-                      </h4>
-                      <p class="banner-three-counter-paragraph tw-text-lg fw-medium text-white">
-                        Projects Built
-                      </p>
-                    </div>
-                    <div class="banner-three-counter-item tw-rounded-md tw-mb-4">
-                      <div class="d-flex align-items-center tw-mb-2">
-                        <div
-                          class="tw-w-9 tw-h-9 rounded-circle overflow-hidden tw-duration-300 hover-scale-2 tw-hover-z-9 position-relative z-1 border border-2 border-white">
-                          <img src="assets/images/thumbs/team-img1.png" alt="Client Image"
-                            class="w-100 h-100 object-fit-cover" />
-                        </div>
-                        <div
-                          class="tw-w-9 tw-h-9 rounded-circle overflow-hidden tw-duration-300 hover-scale-2 tw-hover-z-9 position-relative z-2 tw--ms-16-px z-1 border border-2 border-white">
-                          <img src="assets/images/thumbs/team-img2.png" alt="Client Image"
-                            class="w-100 h-100 object-fit-cover" />
-                        </div>
-                        <div
-                          class="tw-w-9 tw-h-9 rounded-circle overflow-hidden tw-duration-300 hover-scale-2 tw-hover-z-9 position-relative z-3 tw--ms-16-px z-1 border border-2 border-white">
-                          <img src="assets/images/thumbs/team-img3.png" alt="Client Image"
-                            class="w-100 h-100 object-fit-cover" />
-                        </div>
-                        <div
-                          class="tw-w-9 tw-h-9 rounded-circle overflow-hidden tw-duration-300 hover-scale-2 tw-hover-z-9 position-relative z-3 tw--ms-16-px z-1 border border-2 border-white">
-                          <img src="assets/images/thumbs/team-img4.png" alt="Client Image"
-                            class="w-100 h-100 object-fit-cover" />
-                        </div>
-                      </div>
-                      <h4
-                        class="banner-three-counter-title tw-text-101 fw-semibold font-heading text-heading tw-mb-2 lh-1">
-                        <span class="purecounter font-heading" data-purecounter-duration="3"
-                          data-purecounter-end="7"></span>+
-                      </h4>
-                      <p class="banner-three-counter-paragraph tw-text-lg fw-medium text-heading">
-                        Certifications Earned
-                      </p>
-                    </div>
-                  </div>
-                  <div class="banner-three-line-shape position-absolute start-50 translate-middle-x z-n1">
-                    <img src="assets/images/shapes/banner-three-shape.png" alt="shape" />
-                    <div class="banner-three-carcel-shape">
-                      <div><span></span></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="about-three-area py-120 position-relative z-1">
-        <div class="container tw-container-1800-px">
-          <div class="about-three-top position-relative z-1">
-            <div class="row justify-content-center tw-mb-21">
-              <div class="col-xl-9">
-                <div class="text-center">
-                  <h2 class="about-three-title text-heading tw-text-15 tw-itm-title tw-itm-anim">
-                    I build AI-powered tools, cloud-native systems, and
-                    full-stack applications that solve complex, real-world
-                    problems â€” from satellite imagery to CRM automation.
-                  </h2>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xl-6">
-                <div class="about-three-thumb w-100 tw-clip-anim tw-rounded-lg" data-aos="fade-up"
-                  data-aos-duration="1000" data-aos-delay="200">
-                  <img class="tw-anim-img w-100 tw-rounded-lg" data-animate="true"
-                    src="assets/images/thumbs/about-three-thumb.png" alt="Abhinav Kumar Dixit" />
-                </div>
-              </div>
-              <div class="col-xl-6">
-                <div class="about-three-right" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-                  <div>
-                    <p class="tw-text-xl tw-mb-10">
-                      I'm Abhinav Kumar Dixit â€” a B.Tech CSE student at PSIT Kanpur, specializing
-                      in Artificial Intelligence and Machine Learning, with a passion for building
-                      scalable, data-driven solutions that solve real-world problems.
-                    </p>
-                    <p class="tw-text-xl tw-mb-10">
-                      As a Google Gemini Student Ambassador and GeeksforGeeks Campus Ambassador,
-                      I actively drive technical outreach. I've led teams in the ISRO Bharatiya
-                      Antariksh Hackathon 2026 and Google Cloud x H2S Gen AI Academy APAC Edition.
-                    </p>
-                    <p class="tw-text-xl tw-mb-10">
-                      Python &amp; Data Science enthusiast â€” certified in Kubernetes on GCP, n8n
-                      automation, Deloitte Cyber Simulation, Mastercard Cybersecurity, Node.js,
-                      and more. I build, I learn, I ship.
-                    </p>
-                  </div>
-                  <div class="about-three-counter d-inline-block">
-                    <div class="tw-hover-btn-wrapper d-inline-block">
-                      <a class="tw-btn-circle tw-hover-btn-item tw-hover-btn tw-w-160-px tw-h-160-px lh-1 d-inline-flex justify-content-center align-items-center rounded-circle position-relative overflow-hidden border border-1 border-neutral-200"
-                        href="about.html">
-                        <span class="d-flex flex-column justify-content-center">
-                          <span
-                            class="tw-btn-circle-icon text-heading tw-text-8 tw-transition-3 font-heading fw-medium">1+</span>
-                          <span class="text-heading fw-bold text-center tw-transition-3 tw-text-2xl fw-medium">Years of
-                            Experience</span>
-                        </span>
-                        <i class="tw-btn-circle-dot bg-main-two-600"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="about-three-wrap-shape d-flex justify-content-between">
-              <div class="banner-three-counter-item tw-rounded-md position-relative" data-aos="fade-up"
-                data-aos-duration="1000" data-aos-delay="200">
-                <h2 class="banner-three-counter-title tw-text-101 fw-semibold font-heading text-heading tw-mb-2 lh-1">
-                  <span class="purecounter font-heading" data-purecounter-duration="4"
-                    data-purecounter-end="8"></span>.23
-                </h2>
-                <p class="banner-three-counter-paragraph tw-text-lg fw-medium text-heading">
-                  Current SGPA at PSIT
-                </p>
-              </div>
-              <div class="banner-three-counter-item tw-rounded-md position-relative" data-aos="fade-up"
-                data-aos-duration="1000" data-aos-delay="300">
-                <h2 class="banner-three-counter-title tw-text-101 fw-semibold font-heading text-heading tw-mb-2 lh-1">
-                  <span class="purecounter font-heading" data-purecounter-duration="2"
-                    data-purecounter-end="90"></span>th
-                </h2>
-                <p class="banner-three-counter-paragraph tw-text-lg fw-medium text-heading">
-                  Percentile in JEE Mains
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <img class="about-three-shape position-absolute start-0 w-100"
-            src="assets/images/shapes/about-three-shape.png" alt="shape" />
-        </div>
-      </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <span class="section-tag">Innovations</span>
+      <h2 class="section-title">Key Projects & Hackathons</h2>
       
-      <div class="marquee tw-pt-17 bg-black">
-        <div class="marquee_left d-flex align-items-center justify-content-between tw-gap-16 overflow-hidden">
-          <div>
-            <h2 class="marquee-two-title marquee-three-title text-uppercase text-white">
-              Services <span class="text-white">-</span>
-            </h2>
+      <div class="grid-2">
+        <div class="card reveal">
+          <span class="tech-pill" style="margin-bottom: 0.8rem; display: inline-block;">Pro Tech 2026 Grand Finalist</span>
+          <h3>Geoventa</h3>
+          <p style="color: var(--text-muted); margin-top: 0.5rem;">
+            Architected an AI-powered geospatial decision-support tool optimizing commercial site selection. Engineered machine learning pipelines handling heavy multi-variable spatial data structures (foot traffic, economic indicators).
+          </p>
+          <div class="badge-wrap">
+            <span class="tech-pill">Geospatial ML</span>
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">Predictive Analytics</span>
           </div>
-          <div>
-            <h2 class="marquee-two-title marquee-three-title text-uppercase text-stroke">
-              Services <span class="text-white">-</span>
-            </h2>
+        </div>
+
+        <div class="card reveal">
+          <span class="tech-pill" style="margin-bottom: 0.8rem; display: inline-block;">Team Leader</span>
+          <h3>ISRO Satellite Cloud Removal (Bahartiya Antariksh 2026)</h3>
+          <p style="color: var(--text-muted); margin-top: 0.5rem;">
+            Led solution development for Generative AI-based cloud removal and reconstruction for LISS-IV Satellite Imagery, overcoming critical bottlenecks in satellite data processing.
+          </p>
+          <div class="badge-wrap">
+            <span class="tech-pill">Generative AI</span>
+            <span class="tech-pill">Computer Vision</span>
+            <span class="tech-pill">Remote Sensing</span>
           </div>
-          <div>
-            <h2 class="marquee-two-title marquee-three-title text-uppercase text-white">
-              Services <span class="text-white">-</span>
-            </h2>
+        </div>
+
+        <div class="card reveal">
+          <span class="tech-pill" style="margin-bottom: 0.8rem; display: inline-block;">Google Cloud x H2S Gen AI Academy</span>
+          <h3>ACCELERAIQ</h3>
+          <p style="color: var(--text-muted); margin-top: 0.5rem;">
+            Engineered an enterprise data intelligence platform designed to eliminate "analysis paralysis" in high-complexity data workflows and streamline real-time business decisions.
+          </p>
+          <div class="badge-wrap">
+            <span class="tech-pill">GCP</span>
+            <span class="tech-pill">Data Intelligence</span>
+            <span class="tech-pill">GenAI Agents</span>
           </div>
-          <div>
-            <h2 class="marquee-two-title marquee-three-title text-uppercase text-stroke">
-              Services <span class="text-white">-</span>
-            </h2>
+        </div>
+
+        <div class="card reveal">
+          <span class="tech-pill" style="margin-bottom: 0.8rem; display: inline-block;">Full-Stack AI</span>
+          <h3>AI-Powered CRM Data Extractor</h3>
+          <p style="color: var(--text-muted); margin-top: 0.5rem;">
+            Built an end-to-end intelligent CSV parsing pipeline utilizing Gemini LLMs to parse ambiguous data into structured, production-ready JSON schemas.
+          </p>
+          <div class="badge-wrap">
+            <span class="tech-pill">Next.js</span>
+            <span class="tech-pill">Node/Express</span>
+            <span class="tech-pill">Gemini LLM</span>
           </div>
-          <div>
-            <h2 class="marquee-two-title marquee-three-title text-uppercase text-white">
-              Services <span class="text-white">-</span>
-            </h2>
+        </div>
+
+        <div class="card reveal">
+          <span class="tech-pill" style="margin-bottom: 0.8rem; display: inline-block;">Personal Site</span>
+          <h3>Abhinav Kumar Dixit Portfolio</h3>
+          <p style="color: var(--text-muted); margin-top: 0.5rem;">
+            A responsive portfolio site presenting AI/ML, cloud architecture, full-stack development, and geospatial data work.
+          </p>
+          <div class="badge-wrap">
+            <span class="tech-pill">HTML5</span>
+            <span class="tech-pill">Bootstrap 5</span>
+            <span class="tech-pill">JavaScript</span>
           </div>
         </div>
       </div>
-      
-      <section class="service-three-area bg-black pt-120 tw-pb-15">
-        <div class="container tw-container-1800-px">
-          <div class="row">
-            <div class="col-12">
-              <div class="service-three-wrapper">
-                <div class="service-three-single" data-aos="fade-right" data-aos-duration="2000" data-aos-delay="200">
-                  <div class="service-three-item d-flex justify-content-between align-items-center">
-                    <div class="service-three-content d-flex tw-gap-14">
-                      <div>
-                        <span
-                          class="service-three-number text-white tw-text-xl d-inline-flex align-items-center tw-gap-3 lh-1 tw-mt-5 tw-transition-3">01
-                          <img class="tw-transition-3" src="assets/images/icons/service-three-arrow.svg"
-                            alt="arrow" /></span>
-                      </div>
-                      <div>
-                        <div>
-                          <h2 class="service-three-title tw-text-15 text-white tw-mb-4">
-                            <a href="service-details.html">AI &amp; Machine Learning</a>
-                          </h2>
-                        </div>
-                        <div class="portfolio-list portfolio-two-list">
-                          <ul class="d-flex tw-gap-205 flex-wrap">
-                            <li>
-                              <a class="text-uppercase text-white tw-text-sm fw-medium position-relative z-1 hover-bg-main-two-600 hover-border-main-two-600 hover-text-heading tw-transition-3"
-                                href="#">Gemini API</a>
-                            </li>
-                            <li>
-                              <a class="text-uppercase text-white tw-text-sm fw-medium position-relative z-1 hover-bg-main-two-600 hover-border-main-two-600 hover-text-heading tw-transition-3"
-                                href="#">AI Agents</a>
-                            </li>
-                            <li>
-                              <a class="text-uppercase text-white tw-text-sm fw-medium position-relative z-1 hover-bg-main-two-600 hover-border-main-two-600 hover-text-heading tw-transition-3"
-                                href="#">Predictive Analytics</a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="service-three-thumb">
-                      <a href="service-details.html"><img src="assets/images/thumbs/service-three-thumb1.png"
-                          alt="thumb1" /></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="service-three-single ms-auto" data-aos="fade-left" data-aos-duration="2000"
-                  data-aos-delay="300">
-                  <div class="service-three-item d-flex justify-content-between align-items-center">
-                    <div class="service-three-content d-flex tw-gap-14">
-                      <div>
-                        <span
-                          class="service-three-number text-white tw-text-xl d-inline-flex align-items-center tw-gap-3 lh-1 tw-mt-5 tw-transition-3">02
-                          <img class="tw-transition-3" src="assets/images/icons/service-three-arrow.svg"
-                            alt="arrow" /></span>
-                      </div>
-                      <div>
-                        <div>
-                          <h2 class="service-three-title tw-text-15 text-white tw-mb-4">
-                            <a href="service-details.html">Cloud Architecture (GCP)</a>
-                          </h2>
-                        </div>
-                        <div class="portfolio-list portfolio-two-list">
-                          <ul class="d-flex tw-gap-205 flex-wrap">
-                            <li>
-                              <a class="text-uppercase text-white tw-text-sm fw-medium position-relative z-1 hover-bg-main-two-600 hover-border-main-two-600 hover-text-heading tw-transition-3"
-                                href="#">Kubernetes</a>
-                            </li>
-                            <li>
-                              <a class="text-uppercase text-white tw-text-sm fw-medium position-relative z-1 hover-bg-main-two-600 hover-border-main-two-600 hover-text-heading tw-transition-3"
-                                href="#">Google Cloud Platform</a>
-                            </li>
-                            <li>
-                              <a class="text-uppercase text-white tw-text-sm fw-medium position-relative z-1 hover-bg-main-two-600 hover-border-main-two-600 hover-text-heading tw-transition-3"
-                                href="#">DevOps &amp; Deployment</a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="service-three-thumb">
-                      <a href="service-details.html"><img src="assets/images/thumbs/service-three-thumb2.png"
-                          alt="thumb1" /></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="service-three-single" data-aos="fade-right" data-aos-duration="2000" data-aos-delay="400">
-                  <div class="service-three-item d-flex justify-content-between align-items-center">
-                    <div class="service-three-content d-flex tw-gap-14">
-                      <div>
-                        <span
-                          class="service-three-number text-white tw-text-xl d-inline-flex align-items-center tw-gap-3 lh-1 tw-mt-5 tw-transition-3">03
-                          <img class="tw-transition-3" src="assets/images/icons/service-three-arrow.svg"
-                            alt="arrow" /></span>
-                      </div>
-                      <div>
-                        <div>
-                          <h2 class="service-three-title tw-text-15 text-white tw-mb-4">
-                            <a href="service-details.html">Full-Stack Development</a>
-                          </h2>
-                        </div>
-                        <div class="portfolio-list portfolio-two-list">
-                          <ul class="d-flex tw-gap-205 flex-wrap">
-                            <li>
-                              <a class="text-uppercase text-white tw-text-sm fw-medium position-relative z-1 hover-bg-main-two-600 hover-border-main-two-600 hover-text-heading tw-transition-3"
-                                href="#">Next.js</a>
-                            </li>
-                            <li>
-                              <a class="text-uppercase text-white tw-text-sm fw-medium position-relative z-1 hover-bg-main-two-600 hover-border-main-two-600 hover-text-heading tw-transition-3"
-                                href="#">Node.js &amp; Express</a>
-                            </li>
-                            <li>
-                              <a class="text-uppercase text-white tw-text-sm fw-medium position-relative z-1 hover-bg-main-two-600 hover-border-main-two-600 hover-text-heading tw-transition-3"
-                                href="#">Python</a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="service-three-thumb">
-                      <a href="service-details.html"><img src="assets/images/thumbs/service-three-thumb3.png"
-                          alt="thumb1" /></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="service-three-single ms-auto" data-aos="fade-left" data-aos-duration="2000"
-                  data-aos-delay="500">
-                  <div class="service-three-item d-flex justify-content-between align-items-center">
-                    <div class="service-three-content d-flex tw-gap-14">
-                      <div>
-                        <span
-                          class="service-three-number text-white tw-text-xl d-inline-flex align-items-center tw-gap-3 lh-1 tw-mt-5 tw-transition-3">04
-                          <img class="tw-transition-3" src="assets/images/icons/service-three-arrow.svg"
-                            alt="arrow" /></span>
-                      </div>
-                      <div>
-                        <div>
-                          <h2 class="service-three-title tw-text-15 text-white tw-mb-4">
-                            <a href="service-details.html">Cybersecurity</a>
-                          </h2>
-                        </div>
-                        <div class="portfolio-list portfolio-two-list">
-                          <ul class="d-flex tw-gap-205 flex-wrap">
-                            <li>
-                              <a class="text-uppercase text-white tw-text-sm fw-medium position-relative z-1 hover-bg-main-two-600 hover-border-main-two-600 hover-text-heading tw-transition-3"
-                                href="#">Threat Analysis</a>
-                            </li>
-                            <li>
-                              <a class="text-uppercase text-white tw-text-sm fw-medium position-relative z-1 hover-bg-main-two-600 hover-border-main-two-600 hover-text-heading tw-transition-3"
-                                href="#">Mastercard Simulation</a>
-                            </li>
-                            <li>
-                              <a class="text-uppercase text-white tw-text-sm fw-medium position-relative z-1 hover-bg-main-two-600 hover-border-main-two-600 hover-text-heading tw-transition-3"
-                                href="#">Deloitte Cyber</a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="service-three-thumb">
-                      <a href="service-details.html"><img src="assets/images/thumbs/service-three-thumb4.png"
-                          alt="thumb1" /></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+    </div>
+  </section>
+
+  <!-- Experience & Leadership -->
+  <section id="experience" style="background: rgba(0,0,0,0.25);">
+    <div class="container">
+      <span class="section-tag">Impact</span>
+      <h2 class="section-title">Experience & Leadership</h2>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-role">Google Student Ambassador (India)</div>
+        <div class="timeline-company">Google</div>
+        <div class="timeline-date">May 2026 – Present</div>
+        <p style="color: var(--text-muted);">
+          Driving technical outreach and AI innovation across campus. Spearheaded the "Battle of the Bands: Music Night with Lyria" creative developer initiative.
+        </p>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-role">Campus Ambassador</div>
+        <div class="timeline-company">GeeksforGeeks</div>
+        <div class="timeline-date">May 2026 – Present</div>
+        <p style="color: var(--text-muted);">
+          Primary student liaison fostering competitive coding standards, complex programming logic, and peer-to-peer technical mentorship.
+        </p>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-role">Student Ambassador — TECHRITI</div>
+        <div class="timeline-company">IIT Kanpur</div>
+        <div class="timeline-date">Dec 2025 – Apr 2026</div>
+        <p style="color: var(--text-muted);">
+          Spearheaded outreach and student developer participation for one of Asia's premier technical festivals.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills & Certifications -->
+  <section id="skills">
+    <div class="container">
+      <span class="section-tag">Toolkit</span>
+      <h2 class="section-title">Technical Expertise & Badges</h2>
+
+      <div class="grid-3">
+        <div class="card reveal">
+          <h3 style="margin-bottom: 1rem;"><i class="fas fa-brain" style="color: var(--accent-cyan); margin-right: 0.5rem;"></i> AI & ML</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Artificial Intelligence, Machine Learning, Autonomous Agents, Gemini API, Google AI Studio, Geospatial Analytics, Predictive Modeling, Graph Learning.
+          </p>
+        </div>
+
+        <div class="card reveal">
+          <h3 style="margin-bottom: 1rem;"><i class="fas fa-cloud" style="color: var(--accent-indigo); margin-right: 0.5rem;"></i> Cloud & DevOps</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Google Cloud Platform (GCP), Kubernetes Deployment, Workflow Automation (n8n), Scalable Microservices, GSAP, AOS, Swiper.js.
+          </p>
+        </div>
+
+        <div class="card reveal">
+          <h3 style="margin-bottom: 1rem;"><i class="fas fa-code" style="color: var(--accent-purple); margin-right: 0.5rem;"></i> Web & Engineering</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Python, Next.js, Node.js, Express, jQuery, HTML5, CSS3, Bootstrap 5, Data Structures & Complex Logic, Cybersecurity.
+          </p>
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div id="certifications" style="margin-top: 3rem;">
+        <h3 style="margin-bottom: 1.5rem; font-size: 1.4rem;">Industry Certifications & Simulations</h3>
+        <div class="grid-2">
+          <div class="card reveal" style="padding: 1.2rem;">
+            <strong>Deploy Kubernetes Applications on GCP</strong>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Google Cloud Skill Badge (May 2026)</div>
           </div>
-        </div>
-      </section>
-      <section class="portfolio-three-area py-120 position-relative z-1" id="portfolio">
-        <div class="portfolio-three-shape position-absolute top-0 z-n1">
-          <h3 class="portfolio-three-shape-title">works</h3>
-        </div>
-        <div class="container tw-container-1800-px">
-          <div class="row">
-            <div class="col-xl-12">
-              <div
-                class="portfolio-three-wrapper d-flex justify-content-between flex-wrap align-items-start position-relative z-1">
-                <div class="portfolio-three-item tw-rounded-lg tw-mb-705 portfolio-wrapper">
-                  <div class="portfolio-three-wrap d-flex justify-content-between flex-wrap row-gap-2">
-                    <div class="tw-mb-6">
-                      <div>
-                        <h2 class="tw-text-605 fw-medium tw-mb-4">
-                          <a class="hover-text-main-two-600" href="https://github.com/abhinavkumardixit-lgtm" target="_blank" rel="noopener noreferrer">AI-Powered CRM Data Extractor</a>
-                        </h2>
-                      </div>
-                      <div class="portfolio-three-list portfolio-list">
-                        <ul class="d-flex tw-gap-205 flex-wrap">
-                          <li>
-                            <a class="text-uppercase text-heading fw-medium position-relative z-1 hover-bg-main-two-600 hover-border-main-two-600 hover-text-white tw-transition-3"
-                              href="#">AI / AUTOMATION</a>
-                          </li>
-                          <li>
-                            <a class="text-uppercase text-heading fw-medium position-relative z-1 hover-bg-main-two-600 hover-border-main-two-600 hover-text-white tw-transition-3"
-                              href="#">WEB</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="portfolio-three-button">
-                        <a class="portfolio-three-btn tw-w-8 tw-h-8 lh-1 d-inline-flex justify-content-center align-items-center text-heading rounded-circle hover-bg-main-two-600 hover-text-white"
-                          href="portfolio-details.html"><i class="ph ph-arrow-up-right"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="portfolio-thumb not-hide-cursor fw-bold mb-0 tw-rounded-lg" data-cursor="View">
-                    <a class="d-block cursor-hide tw-rounded-lg" href="portfolio-details.html"><img
-                        class="w-100 tw-rounded-lg" src="assets/images/thumbs/portfolio-three-thumb1.jpg"
-                        alt="thumb" /></a>
-                  </div>
-                </div>
-                <div class="portfolio-three-item tw-rounded-lg tw-mb-705 portfolio-wrapper">
-                  <div class="portfolio-three-wrap d-flex justify-content-between flex-wrap row-gap-2">
-                    <div class="tw-mb-6">
-                      <div>
-                        <h2 class="tw-text-605 fw-medium tw-mb-4">
-                          <a class="hover-text-main-two-600" href="https://github.com/abhinavkumardixit-lgtm/GEOVENTA-2.0" target="_blank" rel="noopener noreferrer">Geoventa â€” Geospatial AI Tool</a>
-                        </h2>
-                      </div>
-                      <div class="portfolio-three-list portfolio-list">
-                        <ul class="d-flex tw-gap-205 flex-wrap">
-                          <li>
-                            <a class="text-uppercase text-heading fw-medium position-relative z-1 hover-bg-main-two-600 hover-border-main-two-600 hover-text-white tw-transition-3"
-                              href="#">GEOSPATIAL AI</a>
-                          </li>
-                          <li>
-                            <a class="text-uppercase text-heading fw-medium position-relative z-1 hover-bg-main-two-600 hover-border-main-two-600 hover-text-white tw-transition-3"
-                              href="#">PYTHON</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="portfolio-three-button">
-                      <a class="portfolio-three-btn tw-w-8 tw-h-8 lh-1 d-inline-flex justify-content-center align-items-center text-heading rounded-circle hover-bg-main-two-600 hover-text-white"
-                        href="portfolio-details.html"><i class="ph ph-arrow-up-right"></i></a>
-                    </div>
-                  </div>
-                  <div class="portfolio-thumb not-hide-cursor fw-bold mb-0 tw-rounded-lg" data-cursor="View">
-                    <a class="d-block cursor-hide tw-rounded-lg" href="portfolio-details.html"><img
-                        class="w-100 tw-rounded-lg" src="assets/images/thumbs/portfolio-three-thumb2.jpg"
-                        alt="thumb" /></a>
-                  </div>
-                </div>
-                <div class="portfolio-three-item tw-rounded-lg tw-mb-705 portfolio-wrapper">
-                  <div class="portfolio-three-wrap d-flex justify-content-between flex-wrap row-gap-2">
-                    <div class="tw-mb-6">
-                      <div>
-                        <h2 class="tw-text-605 fw-medium tw-mb-4">
-                          <a class="hover-text-main-two-600" href="https://acceleraiq.vercel.app/" target="_blank" rel="noopener noreferrer">ACCELERAIQ â€” Data Intelligence</a>
-                        </h2>
-                      </div>
-                      <div class="portfolio-three-list portfolio-list">
-                        <ul class="d-flex tw-gap-205 flex-wrap">
-                          <li>
-                            <a class="text-uppercase text-heading fw-medium position-relative z-1 hover-bg-main-two-600 hover-border-main-two-600 hover-text-white tw-transition-3"
-                              href="#">AI / DATA</a>
-                          </li>
-                          <li>
-                            <a class="text-uppercase text-heading fw-medium position-relative z-1 hover-bg-main-two-600 hover-border-main-two-600 hover-text-white tw-transition-3"
-                              href="#">GEN AI</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="portfolio-three-button">
-                      <a class="portfolio-three-btn tw-w-8 tw-h-8 lh-1 d-inline-flex justify-content-center align-items-center text-heading rounded-circle hover-bg-main-two-600 hover-text-white"
-                        href="portfolio-details.html"><i class="ph ph-arrow-up-right"></i></a>
-                    </div>
-                  </div>
-                  <div class="portfolio-thumb not-hide-cursor fw-bold mb-0 tw-rounded-lg" data-cursor="View">
-                    <a class="d-block cursor-hide tw-rounded-lg" href="portfolio-details.html"><img
-                        class="w-100 tw-rounded-lg" src="assets/images/thumbs/portfolio-three-thumb3.jpg"
-                        alt="thumb" /></a>
-                  </div>
-                </div>
-                <div class="portfolio-three-item tw-rounded-lg tw-mb-705 portfolio-wrapper">
-                  <div class="portfolio-three-wrap d-flex justify-content-between flex-wrap row-gap-2">
-                    <div class="tw-mb-6">
-                      <div>
-                        <h2 class="tw-text-605 fw-medium tw-mb-4">
-                          <a class="hover-text-main-two-600" href="portfolio-details.html">ISRO Hackathon 2026 â€” Cloud Removal AI</a>
-                        </h2>
-                      </div>
-                      <div class="portfolio-three-list portfolio-list">
-                        <ul class="d-flex tw-gap-205 flex-wrap">
-                          <li>
-                            <a class="text-uppercase text-heading fw-medium position-relative z-1 hover-bg-main-two-600 hover-border-main-two-600 hover-text-white tw-transition-3"
-                              href="#">ISRO</a>
-                          </li>
-                          <li>
-                            <a class="text-uppercase text-heading fw-medium position-relative z-1 hover-bg-main-two-600 hover-border-main-two-600 hover-text-white tw-transition-3"
-                              href="#">SATELLITE DATA</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="portfolio-three-button">
-                      <a class="portfolio-three-btn tw-w-8 tw-h-8 lh-1 d-inline-flex justify-content-center align-items-center text-heading rounded-circle hover-bg-main-two-600 hover-text-white"
-                        href="portfolio-details.html"><i class="ph ph-arrow-up-right"></i></a>
-                    </div>
-                  </div>
-                  <div class="portfolio-thumb not-hide-cursor fw-bold mb-0 tw-rounded-lg" data-cursor="View">
-                    <a class="d-block cursor-hide tw-rounded-lg" href="portfolio-details.html"><img
-                        class="w-100 tw-rounded-lg" src="assets/images/thumbs/portfolio-three-thumb4.jpg"
-                        alt="thumb" /></a>
-                  </div>
-                </div>
-                <div
-                  class="about-three-counter portfolio-three-counter d-inline-block position-absolute bottom-0 start-0">
-                  <div class="tw-hover-btn-wrapper d-inline-block">
-                    <a class="tw-btn-circle tw-hover-btn-item tw-hover-btn tw-w-160-px tw-h-160-px lh-1 d-inline-flex justify-content-center align-items-center rounded-circle position-relative overflow-hidden"
-                      href="about.html">
-                      <span class="d-flex flex-column justify-content-center">
-                        <span class="text-heading fw-bold tw-transition-3 tw-text-2xl fw-semibold">Discover <br />
-                          Our Projects <i class="ph ph-arrow-up-right"></i></span>
-                      </span>
-                      <i class="tw-btn-circle-dot bg-main-two-600"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="card reveal" style="padding: 1.2rem;">
+            <strong>Build an AI Agent</strong>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">IBM Issued Credential (May 2026)</div>
           </div>
-        </div>
-      </section>
-      <div class="feature-three-area py-120 position-relative z-1">
-        <div class="container tw-container-1800-px">
-          <div class="row">
-            <div class="col-xl-12">
-              <div class="feature-three-wrapper hover__widget">
-                <div class="feature-three-single current hover__reveal-item" data-aos="fade-up" data-aos-duration="1000"
-                  data-aos-delay="200">
-                  <div class="feature-three-item d-flex justify-content-between align-items-center">
-                    <div class="feature-three-left d-flex align-items-center">
-                      <div>
-                        <span
-                          class="feature-three-text tw-text-605 fw-medium text-white tw-transition-3 d-inline-block tw-w-20">01</span>
-                      </div>
-                      <div>
-                               <span
-                            class="feature-three-text tw-text-605 fw-medium text-white tw-transition-3 d-inline-block tw-w-160-px">n8n</span>
-                        </div>
-                        <div>
-                          <span
-                            class="feature-three-text tw-text-605 fw-medium text-white tw-transition-3 d-inline-block">n8n101 â€” Essentials: Your First Workflows</span>
-                      </div>
-                    </div>
-                    <div>
-                      <span
-                        class="feature-three-text tw-text-605 fw-medium text-white tw-transition-3 d-inline-block">2026</span>
-                    </div>
-                  </div>
-                  <div class="hover__reveal-bg bg-img"
-                    data-background-image="assets/images/thumbs/feature-three-thumb1.jpg"></div>
-                </div>
-                <div class="feature-three-single hover__reveal-item" data-aos="fade-up" data-aos-duration="1000"
-                  data-aos-delay="200">
-                  <div class="feature-three-item d-flex justify-content-between align-items-center">
-                    <div class="feature-three-left d-flex align-items-center">
-                      <div>
-                        <span
-                          class="feature-three-text tw-text-605 fw-medium text-white tw-transition-3 d-inline-block tw-w-20">02</span>
-                      </div>
-                      <div>
-                                           <span
-                            class="feature-three-text tw-text-605 fw-medium text-white tw-transition-3 d-inline-block tw-w-160-px">Forage</span>
-                        </div>
-                        <div>
-                          <span
-                            class="feature-three-text tw-text-605 fw-medium text-white tw-transition-3 d-inline-block">Mastercard &amp; Deloitte Cyber Job Simulation</span>
-                      </div>
-                    </div>
-                    <div>
-                      <span
-                        class="feature-three-text tw-text-605 fw-medium text-white tw-transition-3 d-inline-block">2026</span>
-                    </div>
-                  </div>
-                  <div class="hover__reveal-bg bg-img"
-                    data-background-image="assets/images/thumbs/portfolio-two-thumb1.jpg"></div>
-                </div>
-              </div>
-            </div>
+          <div class="card reveal" style="padding: 1.2rem;">
+            <strong>Mastercard & Deloitte Cyber Simulations</strong>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Forage Job Simulation Series (Jun 2026)</div>
+          </div>
+          <div class="card reveal" style="padding: 1.2rem;">
+            <strong>5-Day AI Agents (Vibe Coding)</strong>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Google Developer Program & Kaggle</div>
           </div>
         </div>
       </div>
-      <section class="testimonial-three-area pt-120 tw-pb-22">
-        <div class="container tw-container-1800-px">
-          <div class="row justify-content-center tw-mb-21">
-            <div class="col-xl-10">
-              <div class="text-center">
-                <h2 class="testimonial-three-title text-heading tw-text-15 tw-itm-title tw-itm-anim">
-                  Honest testimonials from clients highlighting my commitment
-                  to real-world impact through engineering, hackathons,
-                  and AI-driven solutions that deliver measurable results
-                </h2>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xl-12">
-              <div class="testimonial-three-slider position-relative z-1">
-                <div class="testimonial-three-active swiper-container">
-                  <div class="swiper-wrapper">
-                    
-                    <div
-                      class="testimonial-three-wrapper d-flex align-items-center tw-gap-9 tw-rounded-lg tw-mb-705 swiper-slide"
-                      data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                      <div class="testimonial-three-thumb position-relative z-1">
-                        <img class="w-100 h-100 tw-rounded-lg" src="assets/images/thumbs/testimonial-three-thumb1.jpg"
-                          alt="thumb" />
-                        <div class="testimonial-three-button position-absolute start-50 top-50 translate-middle">
-                          <a class="open-popup testimonial-three-btn tw-w-220 tw-h-220 lh-1 d-inline-flex align-items-center justify-content-center bg-white text-main-two-600 tw-text-2xl position-relative z-1 hover-text-main-two-600 rounded-circle"
-                            href="https://www.youtube.com/watch?v=Fvae8nxzVz4" data-fancybox="gallery" data-caption="">
-                            <i class="ph-bold ph-play"></i>
-                            <span class="ripple"></span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="testimonial-three-content w-100">
-                        <div class="d-flex align-items-center justify-content-between tw-mb-16">
-                          <div>
-                            <span><img src="assets/images/icons/testimonial-three-icon.svg" alt="icon" /></span>
-                          </div>
-                          <div class="testimonial-three-review">
-                            <span class="text-heading tw-text-lg"><i class="ph-bold ph-star"></i></span>
-                            <span class="text-heading tw-text-lg"><i class="ph-bold ph-star"></i></span>
-                            <span class="text-heading tw-text-lg"><i class="ph-bold ph-star"></i></span>
-                          </div>
-                        </div>
-                        <div class="tw-mb-15">
-                          <p class="testimonial-three-paragraph text-heading tw-text-2xl fw-semibold">
-                              As Team Leader for the ISRO Bharatiya Antariksh Hackathon 2026, I addressed the challenge of 'Cloud Removal and Reconstruction of LISS-IV Satellite Imagery'. My team developed a GAN-based model to reconstruct obscured geospatial data, ensuring reliable Earth Observation for critical missions.
-                            </p>
-                          </div>
-                          <div>
-                            <h2 class="tw-text-2xl fw-medium">
-                              ISRO Bharatiya Antariksh Hackathon 2026
-                            </h2>
-                            <p class="tw-text-lg">Team GEOVENTA â€” ABHINAV KUMAR DIXIT, Team Leader</p>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div
-                      class="testimonial-three-wrapper d-flex align-items-center tw-gap-9 tw-rounded-lg tw-mb-705 swiper-slide"
-                      data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-                      <div class="testimonial-three-thumb position-relative z-1">
-                        <img class="w-100 h-100 tw-rounded-lg" src="assets/images/thumbs/testimonial-three-thumb2.jpg"
-                          alt="thumb" />
-                        <div class="testimonial-three-button position-absolute start-50 top-50 translate-middle">
-                          <a class="open-popup testimonial-three-btn tw-w-220 tw-h-220 lh-1 d-inline-flex align-items-center justify-content-center bg-white text-main-two-600 tw-text-2xl position-relative z-1 hover-text-main-two-600 rounded-circle"
-                            href="https://www.youtube.com/watch?v=Fvae8nxzVz4" data-fancybox="gallery" data-caption="">
-                            <i class="ph-bold ph-play"></i>
-                            <span class="ripple"></span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="testimonial-three-content w-100">
-                        <div class="d-flex align-items-center justify-content-between tw-mb-16">
-                          <div>
-                            <span><img src="assets/images/icons/testimonial-three-icon.svg" alt="icon" /></span>
-                          </div>
-                          <div class="testimonial-three-review">
-                            <span class="text-heading tw-text-lg"><i class="ph-bold ph-star"></i></span>
-                            <span class="text-heading tw-text-lg"><i class="ph-bold ph-star"></i></span>
-                            <span class="text-heading tw-text-lg"><i class="ph-bold ph-star"></i></span>
-                            <span class="text-heading tw-text-lg"><i class="ph-bold ph-star"></i></span>
-                            <span class="text-heading tw-text-lg"><i class="ph-bold ph-star"></i></span>
-                          </div>
-                        </div>
-                        <div class="tw-mb-15">
-                          <p class="testimonial-three-paragraph text-heading tw-text-2xl fw-semibold">
-                              Meet ACCELERAIQ â€” a GPU-accelerated data intelligence tool built
-                              to tackle the massive bottleneck of â€˜analysis paralysisâ€™. Complex
-                              data platforms often lack practical utility for everyday users.
-                              ACCELERAIQ changes that. Built at Google Cloud x H2S Gen AI Academy APAC Edition.
-                            </p>
-                        </div>
-                        <div>
-                          <h2 class="tw-text-2xl fw-medium">
-                            Google Cloud x H2S Gen AI Academy APAC
-                          </h2>
-                          <p class="tw-text-lg">ACCELERAIQ â€” Team Leader (with Araya Singh &amp; Aditya Sharma)</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="brand-three-area brand-two-area pb-120 @@brandipClass">
-        <div class="container tw-container-1800-px">
-          <div class="row">
-            <div class="col-xl-12">
-              <div class="text-center tw-mb-15">
-                <h2 class="brand-three-title tw-text-xl tw-char-animation">
-                   Technologies &amp; Tools I Work With
-                 </h2>
-              </div>
-            </div>
-          </div>
-          <div class="row gx-2">
-            <div class="col-xl-2 col-lg-6 col-md-6">
-              <div class="brand-item brand-three-item position-relative z-1 tw-mb-1" data-aos="fade-up"
-                data-aos-duration="1000" data-aos-delay="200">
-                <span class="brand-active-media"><img src="assets/images/thumbs/marquee-two-thumb1.png"
-                    alt="thumb" /></span>
-                <span class="brand-hover-media"><img src="assets/images/thumbs/marquee-two-thumb11.png"
-                    alt="thumb" /></span>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-6 col-md-6">
-              <div class="brand-item brand-three-item position-relative z-1 tw-mb-1" data-aos="fade-up"
-                data-aos-duration="1000" data-aos-delay="300">
-                <span class="brand-active-media"><img src="assets/images/thumbs/marquee-two-thumb2.png"
-                    alt="thumb" /></span>
-                <span class="brand-hover-media"><img src="assets/images/thumbs/marquee-two-thumb22.png"
-                    alt="thumb" /></span>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-6 col-md-6"></div>
-            <div class="col-xl-2 col-lg-6 col-md-6">
-              <div class="brand-item brand-three-item position-relative z-1 tw-mb-1" data-aos="fade-up"
-                data-aos-duration="1000" data-aos-delay="400">
-                <span class="brand-active-media"><img src="assets/images/thumbs/marquee-thumb55.png"
-                    alt="thumb" /></span>
-                <span class="brand-hover-media"><img src="assets/images/thumbs/marquee-thumb5.png" alt="thumb" /></span>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-6 col-md-6"></div>
-            <div class="col-xl-2 col-lg-6 col-md-6">
-              <div class="brand-item brand-three-item position-relative z-1 tw-mb-1" data-aos="fade-up"
-                data-aos-duration="1000" data-aos-delay="500">
-                <span class="brand-active-media"><img src="assets/images/thumbs/marquee-two-thumb4.png"
-                    alt="thumb" /></span>
-                <span class="brand-hover-media"><img src="assets/images/thumbs/marquee-two-thumb44.png"
-                    alt="thumb" /></span>
-              </div>
-            </div>
-          </div>
-          <div class="row gx-2">
-            <div class="col-xl-2 col-lg-6 col-md-6"></div>
-            <div class="col-xl-2 col-lg-6 col-md-6">
-              <div class="brand-item brand-three-item position-relative z-1 tw-mb-1" data-aos="fade-up"
-                data-aos-duration="1000" data-aos-delay="200">
-                <span class="brand-active-media"><img src="assets/images/thumbs/marquee-thumb33.png"
-                    alt="thumb" /></span>
-                <span class="brand-hover-media"><img src="assets/images/thumbs/marquee-thumb3.png" alt="thumb" /></span>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-6 col-md-6">
-              <div class="brand-item brand-three-item position-relative z-1 tw-mb-1" data-aos="fade-up"
-                data-aos-duration="1000" data-aos-delay="300">
-                <span class="brand-active-media"><img src="assets/images/thumbs/marquee-thumb11.png"
-                    alt="thumb" /></span>
-                <span class="brand-hover-media"><img src="assets/images/thumbs/marquee-thumb1.png" alt="thumb" /></span>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-6 col-md-6"></div>
-            <div class="col-xl-2 col-lg-6 col-md-6">
-              <div class="brand-item brand-three-item position-relative z-1 tw-mb-1" data-aos="fade-up"
-                data-aos-duration="1000" data-aos-delay="400">
-                <span class="brand-active-media"><img src="assets/images/thumbs/marquee-thumb66.png"
-                    alt="thumb" /></span>
-                <span class="brand-hover-media"><img src="assets/images/thumbs/marquee-thumb6.png" alt="thumb" /></span>
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-6 col-md-6">
-              <div class="brand-item brand-three-item position-relative z-1 tw-mb-1" data-aos="fade-up"
-                data-aos-duration="1000" data-aos-delay="500">
-                <span class="brand-active-media"><img src="assets/images/thumbs/marquee-thumb22.png"
-                    alt="thumb" /></span>
-                <span class="brand-hover-media"><img src="assets/images/thumbs/marquee-thumb2.png" alt="thumb" /></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="ef-faq-area py-120 position-relative z-1" id="faq">
-        <div class="container tw-container-1800-px">
-          <div class="row justify-content-center tw-mb-10">
-            <div class="col-xl-7 text-center">
-              <span class="ef-eyebrow">Good to know</span>
-              <h2 class="ef-faq-title">Frequently asked questions</h2>
-            </div>
-          </div>
-          <div class="row justify-content-center">
-            <div class="col-xl-9">
-              <div id="efFaqList"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="footer-three-area pt-120 tw-pb-10 position-relative z-1" id="contact">
-        <div class="container tw-container-1800-px">
-          <div class="row justify-content-between pb-120">
-            <div class="col-xl-5 col-lg-6">
-              <div class="footer-three-top-left tw-me-25" data-aos="fade-up" data-aos-duration="1000"
-                data-aos-delay="200">
-                <div class="tw-mb-9">
-                  <h2 class="tw-text-15 text-white tw-char-animation">
-                    Let's build something impactful together
-                  </h2>
-                </div>
-                <div class="d-inline-flex align-items-center tw-gap-6 tw-mb-10 flex-wrap">
-                  <a class="tw-text-2xl fw-medium text-main-600 hover-underline hover-text-white"
-                    href="mailto:abhinavkumardixit@gmail.com">abhinavkumardixit@gmail.com</a>
-                  <span class="tw-text-2xl fw-medium text-main-600">//</span>
-                  <a class="tw-text-2xl fw-medium text-main-600 hover-underline hover-text-white"
-                    href="tel:+919321785920">+91 93217 85920</a>
-                </div>
-                <div class="footer-three-top-info tw-p-705 tw-rounded-lg d-flex tw-gap-6">
-                  <div class="footer-three-top-thumb tw-w-160-px">
-                    <img class="tw-rounded-lg w-100" src="assets/images/thumbs/footer-three-thumb.jpg" alt="thumb" />
-                  </div>
-                  <div class="footer-three-top-content d-flex justify-content-between flex-column">
-                    <div>
-                      <h3 class="tw-text-xl text-white tw-mb-2">
-                        Abhinav Kumar Dixit
-                      </h3>
-                      <p class="text-white">AI/ML &amp; Cloud Engineer</p>
-                    </div>
-                    <div class="footer-three-social">
-                      <ul class="d-flex align-items-center tw-gap-1">
-                        <li>
-                          <a class="tw-w-11 tw-h-101 lh-1 d-inline-flex align-items-center justify-content-center tw-rounded-lg tw-text-xl text-heading hover-bg-main-600 hover-text-heading"
-                            href="https://www.linkedin.com/in/abhinav-kumar-dixit-39a4a03a3" target="_blank" rel="noopener noreferrer"><i class="ph ph-linkedin-logo"></i></a>
-                        </li>
-                        <li>
-                          <a class="tw-w-11 tw-h-101 lh-1 d-inline-flex align-items-center justify-content-center tw-rounded-lg tw-text-xl text-heading hover-bg-main-600 hover-text-heading"
-                            href="https://github.com/abhinavkumardixit-lgtm" target="_blank" rel="noopener noreferrer"><i class="ph ph-github-logo"></i></a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-6 col-lg-6">
-              <div class="footer-three-form" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-                <form id="efContactForm" novalidate>
-                  <div class="row">
-                    <div class="col-xl-12">
-                      <div class="position-relative tw-mb-7 ef-field" id="efNameField">
-                        <input type="text" id="efNameInput" name="name"
-                          class="form-control bg-transparent shadow-none tw-rounded-lg text-white tw-ps-7 tw-pe-13 tw-placeholder-text-neutral-100 focus-border-main-600 tw-h-18 focus-tw-placeholder-text-hidden tw-placeholder-transition-2"
-                          placeholder="First Name" />
-                        <div class="ef-field-error">Please enter your name.</div>
-                      </div>
-                    </div>
-                    <div class="col-xl-12">
-                      <div class="position-relative tw-mb-7 ef-field" id="efEmailField">
-                        <input type="email" id="efEmailInput" name="email"
-                          class="form-control bg-transparent shadow-none tw-rounded-lg text-white tw-ps-7 tw-pe-13 tw-placeholder-text-neutral-100 focus-border-main-600 tw-h-18 focus-tw-placeholder-text-hidden tw-placeholder-transition-2"
-                          placeholder="Email Address" />
-                        <div class="ef-field-error">Please enter a valid email address.</div>
-                      </div>
-                    </div>
-                    <div class="col-xl-12">
-                      <div class="position-relative tw-mb-7 ef-field" id="efMessageField">
-                        <textarea id="efMessageInput" name="message"
-                          class="form-control bg-transparent shadow-none tw-h-196-px tw-rounded-lg text-white tw-ps-7 tw-pe-13 tw-placeholder-text-neutral-100 focus-border-main-600 focus-tw-placeholder-text-hidden tw-placeholder-transition-2"
-                          placeholder="Message"></textarea>
-                        <div class="ef-field-error">Please enter a short message.</div>
-                      </div>
-                    </div>
-                    <div class="col-xl-12">
-                      <div class="contact-button">
-                        <button type="submit"
-                          class="tw-hover-btn bg-main-600 text-heading tw-text-xl fw-bold tw-py-4 tw-px-10 d-inline-flex justify-content-center w-100 hover-text-heading hover-bg-white tw-transition-3 tw-rounded-lg">
-                          submit message
-                        </button>
-                      </div>
-                    </div>
-                    <div class="col-xl-12">
-                      <div id="efFormStatus" role="status"></div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="footer-three-border tw-px-18 tw-mb-10">
-          <div class="container-fluid gx-0">
-            <div class="row">
-              <div class="col-xl-12">
-                <div class="footer-three-middile d-flex align-items-center justify-content-between">
-                  <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                    <h4 class="tw-text-2xl text-white tw-mb-2">
-                      Quick Links
-                    </h4>
-                    <ul class="d-flex tw-gap-2 flex-wrap">
-                      <li>
-                        <a class="tw-text-lg text-white" href="index.html">Home,</a>
-                      </li>
-                      <li>
-                        <a class="tw-text-lg text-white" href="index.html">About Me,
-                        </a>
-                      </li>
-                      <li>
-                        <a class="tw-text-lg text-white" href="index.html">Portfolio,
-                        </a>
-                      </li>
-                      <li>
-                        <a class="tw-text-lg text-white" href="index.html">Service,
-                        </a>
-                      </li>
-                      <li>
-                        <a class="tw-text-lg text-white" href="index.html">Contact
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-                    <a class="footer-three-back-to-top tw-w-170 tw-h-170 lh-1 d-inline-flex justify-content-center align-items-center bg-main-two-600 text-white tw-text-3xl rounded-circle"
-                      href="#"><i class="ph ph-arrow-up"></i></a>
-                  </div>
-                  <div class="text-lg-end" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-                    <h4 class="tw-text-2xl text-white tw-mb-2">
-                      Abhinav Kumar Dixit
-                    </h4>
-                    <p class="tw-text-lg text-white">
-                      &copy; 2025 Abhinav Kumar Dixit. All rights reserved
-                    </p>
-                    <p class="tw-text-sm text-white ef-last-updated" id="efLastUpdated">Last updated: —</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="container tw-container-1800-px">
-            <div class="row">
-              <div class="col-xl-12">
-                <div class="footer-three-bottom text-center">
-                  <h5 class="footer-three-bottom-title text-white text-center">
-                    Abhinav Kumar Dixit
-                  </h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <img class="position-absolute top-0 start-0 z-n1" src="assets/images/shapes/footer-three-bg-shape.png"
-            alt="shape" />
-        </div>
-      </section>
     </div>
-  </div>
-  
-  <script src="assets/js/jquery-3.7.1.min.js"></script>
-  
-  <script src="assets/js/phosphor-icon.js"></script>
-  
-  <script src="assets/js/boostrap.bundle.min.js"></script>
-  
-  <script src="assets/js/aos.js"></script>
-  
-  <script src="assets/js/magnific-popup.min.js"></script>
-  
-  <script src="assets/js/jquery.marquee.min.js"></script>
-  
-  <script src="assets/js/purecounter.js"></script>
-  
-  <script src="assets/js/swiper-bundle.min.js"></script>
+  </section>
 
-  
-  <script src="assets/js/gsap/gsap.js"></script>
-  
-  <script src="assets/js/gsap/gsap-scroll-to-plugin.js"></script>
-  
-  <script src="assets/js/gsap/gsap-scroll-smoother.js"></script>
-  
-  <script src="assets/js/gsap/gsap-scroll-trigger.js"></script>
-  
-  <script src="assets/js/gsap/gsap-split-text.js"></script>
-  
-  <script src="assets/js/gsap/chroma.min.js"></script>
+  <!-- Education & Achievements -->
+  <section id="about" style="background: rgba(0,0,0,0.25);">
+    <div class="container">
+      <div class="grid-2">
+        <div class="card reveal">
+          <span class="section-tag">Academics</span>
+          <h3>PSIT Kanpur</h3>
+          <p style="color: var(--accent-cyan); font-weight: 600;">B.Tech in Computer Science (2025 – 2029)</p>
+          <p style="margin-top: 0.5rem; color: var(--text-muted);">
+            Current Cumulative SGPA: <strong>8.23</strong><br>
+            Kendriya Vidyalaya (CBSE 10+2): Focus in Mathematics & Computer Science.
+          </p>
+        </div>
 
-  
-  <script src="assets/js/slider-active.js"></script>
-  
-  <script src="assets/js/custom-gsap.js"></script>
-  
-  <script src="assets/js/main.js"></script>
-  
-  <script src="assets/js/tw-cursor.js"></script>
-
-  <!-- ============ EXTRA FEATURE MARKUP ============ -->
-
-  <!-- Site search overlay -->
-  <div id="efSearchOverlay" class="ef-search-overlay">
-    <div class="ef-search-box">
-      <input type="text" id="efSearchInput" placeholder="Search projects, skills, sections…" autocomplete="off">
-      <div id="efSearchResults"></div>
-    </div>
-  </div>
-
-  <!-- Confirm-before-send modal -->
-  <div class="ef-modal-overlay" id="efConfirmModal">
-    <div class="ef-modal">
-      <h3>Send this message?</h3>
-      <p id="efModalSummary">Confirm you'd like to send this to Abhinav.</p>
-      <div class="ef-modal-actions">
-        <button class="ef-btn" id="efModalCancel" type="button">Cancel</button>
-        <button class="ef-btn primary" id="efModalConfirm" type="button">Confirm &amp; send</button>
+        <div class="card reveal">
+          <span class="section-tag">Milestones</span>
+          <h3>Key Honors</h3>
+          <ul style="list-style: none; margin-top: 0.5rem; color: var(--text-muted);">
+            <li style="margin-bottom: 0.6rem;">🏆 <strong>Grand Finalist — Pro Tech 2026</strong> for Geoventa spatial AI.</li>
+            <li style="margin-bottom: 0.6rem;">🎯 <strong>JEE Mains Excellence:</strong> Consecutive 90+ percentiles highlighting rigorous quantitative analytical ability.</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Floating contact button -->
-  <div id="efFloatingContact"><span class="ef-ping"></span> Say hello</div>
-
-  <!-- Cookie consent banner -->
-  <div id="efCookieBanner">
-    <p>This site uses a minimal cookie to remember your theme preference. No third-party trackers.</p>
-    <div class="ef-cookie-actions">
-      <button class="ef-btn" id="efCookieDecline" type="button">Decline</button>
-      <button class="ef-btn primary" id="efCookieAccept" type="button">Accept</button>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Abhinav Kumar Dixit. Crafted for performance, AI engineering, and cloud scalability.</p>
     </div>
-  </div>
+  </footer>
 
-  <script src="assets/js/extra-features.js"></script>
+  <!-- Script for Canvas Background & Reveal Effects -->
+  <script>
+    // Reveal On Scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // Interactive Particle Constellation Canvas
+    const canvas = document.getElementById('canvas-bg');
+    const ctx = canvas.getContext('2d');
+    let width, height, particles = [];
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.radius = Math.random() * 1.5 + 0.5;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.4)';
+        ctx.fill();
+      }
+    }
+
+    function init() {
+      resize();
+      particles = [];
+      const count = Math.floor((width * height) / 18000);
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 110) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(99, 102, 241, ${0.15 * (1 - dist / 110)})`;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', init);
+    init();
+    animate();
+  </script>
 </body>
-
 </html>
-
